@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<inkscape-extension xmlns="http://www.inkscape.org/namespace/inkscape/extension">
+	<_name>Tag</_name>
+	<id>net.plom.christophe.inkscape.dev.tag</id>
+   <!--<param name="text" type="string" _gui-text="Text">PHP</param>-->
+   <dependency type="executable" location="extensions">tag.py</dependency>
+   <dependency type="executable" location="extensions">functions.py</dependency>
+	<effect>
+		<object-type>all</object-type>
+		<effects-menu>
+			<submenu _name="Tophsic"/>
+		</effects-menu>
+	</effect>
+	<script>
+		<command reldir="extensions" interpreter="python">tag.py</command>
+	</script>
+</inkscape-extension>
