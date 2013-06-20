@@ -2,9 +2,10 @@
 <inkscape-extension xmlns="http://www.inkscape.org/namespace/inkscape/extension">
 	<_name>Tag</_name>
 	<id>net.plom.christophe.inkscape.dev.tag</id>
-   <!--<param name="text" type="string" _gui-text="Text">PHP</param>-->
+   <param name="text" type="string" _gui-text="Text">PHP</param>
    <dependency type="executable" location="extensions">tag.py</dependency>
    <dependency type="executable" location="extensions">functions.py</dependency>
+   <dependency type="executable" location="extensions">path.py</dependency>
 	<effect>
 		<object-type>all</object-type>
 		<effects-menu>
