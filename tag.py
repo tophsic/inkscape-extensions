@@ -35,17 +35,15 @@ class Tag(inkex.Effect):
 
         d = tagShape.get('d')
         currentPath = path.Path(d)
-        move = float(x) + float(width) 
-        #tagShape.set('d', currentPath.formatPath())
-        x_2_start = currentPath.getXPoint(0)
-        diff = x_2_start - x_1_start
-        currentPath.movePoint(0, x_1_end + diff, None)
-        x_2_start = currentPath.getXPoint(1)
-        diff = x_2_start - x_1_start
-        currentPath.movePoint(1, x_1_end + diff, None)
-        x_2_start = currentPath.getXPoint(2)
-        diff = x_2_start - x_1_start
-        currentPath.movePoint(2, x_1_end + diff, None)
+        tagShape.set('d', currentPath.formatPath())
+
+	points = [0, 1, 2, 9, 10, 11, 12, 14, 15, 16, 23, 24, 25, 26]
+	
+	for point in points:
+            x_2_start = currentPath.getXPoint(point)
+            diff = x_2_start - x_1_start
+            currentPath.movePoint(point, x_1_end + diff, None)
+
         tagShape.set('d', currentPath.formatPath())
 
 if __name__ == '__main__':

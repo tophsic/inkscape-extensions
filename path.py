@@ -176,24 +176,11 @@ class Path():
                 pt[1][1] = y
         elif command == 'C':
             if x is not None:
+		pt[1][0] = x + (pt[1][0] - pt[1][4])
+		pt[1][2] = x + (pt[1][2] - pt[1][4])
                 pt[1][4] = x
             if y is not None:
                 pt[1][5] = y
-
-        return self.formatPath([pt])
-
-    def translatePoint(self, index, x, y):
-        pt = self.p[index]
-        command = pt[0]
-
-        if self.pathdefs.has_key(command.upper()) is False:
-            raise Exception, 'Invalid command'
-
-        if x is not None:
-            pt[1][0] = pt[1][0] + x
-
-        if y is not None:
-            pt[1][1] = pt[1][1] + y
 
         return self.formatPath([pt])
 
@@ -206,4 +193,14 @@ class Path():
         pt[0] = pt[0].upper()
 
     def getXPoint(self, index):
-        return self.p[index][1][0]
+        pt = self.p[index]
+        command = pt[0].upper()
+
+        if self.pathdefs.has_key(command) is False:
+            raise Exception, 'Invalid command'
+
+        if command in ['M', 'L']:
+            return pt[1][0]
+        elif command == 'C':
+            return pt[1][4]
+
