@@ -1,20 +1,14 @@
 #!/usr/bin/env python
 
 import inkex
-import gettext
 import sys
 import functions
 import path
 
-_ = gettext.gettext
-
 class Tag(inkex.Effect):
     def __init__(self):
         inkex.Effect.__init__(self)
-        self.OptionParser.add_option("--text",
-                                action="store", type="string",
-                                dest="text",
-                                help="")
+
     def effect(self):
         dimensions = functions.getDimensions(sys.argv[-1], 'text')
         x = dimensions[1]
@@ -37,12 +31,12 @@ class Tag(inkex.Effect):
         currentPath = path.Path(d)
         tagShape.set('d', currentPath.formatPath())
 
-	points = [0, 1, 2, 9, 10, 11, 12, 14, 15, 16, 23, 24, 25, 26]
-	
-	for point in points:
-            x_2_start = currentPath.getXPoint(point)
-            diff = x_2_start - x_1_start
-            currentPath.movePoint(point, x_1_end + diff, None)
+        points = [0, 1, 2, 9, 10, 11, 12, 14, 15, 16, 23, 24, 25, 26]
+	    
+        for point in points:
+                x_2_start = currentPath.getXPoint(point)
+                diff = x_2_start - x_1_start
+                currentPath.movePoint(point, x_1_end + diff, None)
 
         tagShape.set('d', currentPath.formatPath())
 
